@@ -6,7 +6,6 @@ const cors = require('cors');
 require('dotenv').config();
 
 const middlewares = require('./middlewares');
-const api = require('./api');
 const order = require('./order');
 const callcenter = require('./callcenter');
 
@@ -29,7 +28,6 @@ app.get('/price/estimate', (req, res) => {
   });
 });
 
-app.use('/api/v1', api);
 app.use('/order', order);
 app.use('/callcenter', callcenter);
 
