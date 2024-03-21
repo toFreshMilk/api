@@ -9,6 +9,6 @@ module.exports = {
     'no-param-reassign': 0,
     'no-return-assign': 0,
     'no-console': 'off',
-    camelcase: 0,
+    semi: 0,
   },
 };

@@ -5,7 +5,6 @@ const router = express.Router();
 // /order
 
 router.post('/', (req, res) => {
-  req = '';
   res.json({
     message: `${req}주문등록 API - 👋🌎🌍🌏`,
   });
