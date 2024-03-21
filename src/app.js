@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
+const axios = require('./common/axios');
 
 require('dotenv').config();
 
@@ -23,8 +24,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/price/estimate', (req, res) => {
-  res.json({
-    message: '예상 가격 조회 🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+  axios.post('', {
+    sqlcmd: 'select_AvailableSP4WEB',
+    params: [],
+  }).then((response) => {
+    res.json({
+      message: response.data,
+    });
+  }).catch((err) => {
+    res.json({
+      message: err,
+    });
   });
 });
 

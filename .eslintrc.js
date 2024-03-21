@@ -10,5 +10,8 @@ module.exports = {
     'no-return-assign': 0,
     'no-console': 'off',
     semi: 0,
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'implicit-arrow-linebreak': 0,
+    'arrow-body-style': 0,
   },
 };
