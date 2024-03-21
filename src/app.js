@@ -7,8 +7,8 @@ const axios = require('./common/axios')
 require('dotenv').config()
 
 const middlewares = require('./middlewares')
-const order = require('./order')
-const callcenter = require('./callcenter')
+const order = require('./api/order')
+const callcenter = require('./api/callcenter')
 
 const app = express()
 
