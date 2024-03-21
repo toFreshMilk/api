@@ -5,9 +5,7 @@ module.exports = {
   },
   extends: 'airbnb-base',
   rules: {
-    'no-underscore-dangle': 0,
-    'no-param-reassign': 0,
-    'no-return-assign': 0,
+    'no-param-reassign': 'warn',
     'no-console': 'off',
     semi: ['error', 'never'],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
