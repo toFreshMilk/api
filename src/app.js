@@ -2,7 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
-const axios = require('./common/axios')
+const axiosInstance = require('./common/axios')
 
 require('dotenv').config()
 
@@ -24,17 +24,19 @@ app.get('/', (req, res) => {
 })
 
 app.get('/price/estimate', (req, res) => {
-  axios
+  axiosInstance
     .post('', {
       sqlcmd: 'select_AvailableSP4WEB',
       params: [],
     })
     .then((response) => {
+      // console.log(response.data)
       res.json({
         message: response.data,
       })
     })
     .catch((err) => {
+      // console.log(err)
       res.json({
         message: err,
       })
