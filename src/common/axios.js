@@ -23,8 +23,8 @@ axiosInstance.interceptors.request.use((config) => {
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log('response.use.outfullfiled')
-    console.log(response)
+    // console.log('response.use.outfullfiled')
+    // console.log(response)
     return response
   },
   (error) => {
@@ -33,7 +33,8 @@ axiosInstance.interceptors.response.use(
     // }
     console.log('response.use.error')
     console.log(error)
-    return Promise.reject(error)
+    // eslint-disable-next-line prefer-promise-reject-errors
+    return Promise.reject('xccc')
   },
 )
 

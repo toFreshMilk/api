@@ -38,9 +38,8 @@ app.get('/price/estimate', (req, res) => {
       })
     })
     .catch((err) => {
-      // console.log(err)
       res.json({
-        message: err,
+        message: String(err),
       })
     })
 })
