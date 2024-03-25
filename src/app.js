@@ -2,7 +2,9 @@ const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
-const axiosInstance = require('./common/axios')
+const path = require('path')
+
+const axiosInstance = require(path.resolve(__dirname, 'common/axios'))
 
 require('dotenv').config()
 
