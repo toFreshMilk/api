@@ -8,9 +8,9 @@ const axiosInstance = require(path.resolve(__dirname, 'common/axios'))
 
 require('dotenv').config()
 
-const middlewares = require('./middlewares')
-const order = require('./api/order')
-const callcenter = require('./api/callcenter')
+const middlewares = require(path.resolve(__dirname, 'middlewares'))
+const order = require(path.resolve(__dirname, 'api/order'))
+const callcenter = require(path.resolve(__dirname, 'api/callcenter'))
 
 const app = express()
 
