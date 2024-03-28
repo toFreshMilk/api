@@ -2,15 +2,14 @@ const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
-const path = require('path')
 
-const axiosInstance = require(path.resolve(__dirname, 'common/axios'))
+const axiosInstance = require('./common/axios')
 
 require('dotenv').config()
 
-const middlewares = require(path.resolve(__dirname, 'middlewares'))
-const order = require(path.resolve(__dirname, 'api/order'))
-const callcenter = require(path.resolve(__dirname, 'api/callcenter'))
+const middlewares = require('./middlewares')
+const order = require('./api/order')
+const callcenter = require('./api/callcenter')
 
 const app = express()
 
@@ -25,23 +24,10 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/price/estimate', (req, res) => {
-  axiosInstance
-    .post('', {
-      sqlcmd: 'select_AvailableSP4WEB',
-      params: [],
-    })
-    .then((response) => {
-      // console.log(response.data)
-      res.json({
-        message: response.data,
-      })
-    })
-    .catch((err) => {
-      res.json({
-        message: String(err),
-      })
-    })
+app.get('/price/estimate', async (req, res) => {
+  // const ip = req.header
+  const proc = await axiosInstance.sendRequest('Callcenter_Get_Dev', req.body)
+  res.json(proc)
 })
 
 app.use('/order', order)

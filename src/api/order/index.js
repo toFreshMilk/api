@@ -1,13 +1,10 @@
 const express = require('express')
 
 const router = express.Router()
-// const path = require('path')
-
-// const axiosInstance = require(path.resolve(__dirname, 'common/axios'))
 
 router.post('/', (req, res) => {
   res.json({
-    message: `${req}주문등록 API - 👋🌎🌍🌏`,
+    message: '주문등록 API - 👋🌎🌍🌏',
   })
 })
 
