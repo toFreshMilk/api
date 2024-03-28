@@ -1,23 +1,4 @@
-## Setup
+172.17.20.12 (Linux)
+172.17.20.13 (Linux)
 
-```
-npm install
-```
-
-## Lint
-
-```
-npm run lint
-```
-
-## Test
-
-```
-npm test
-```
-
-## Development
-
-```
-npm run dev
-```
+/opt
