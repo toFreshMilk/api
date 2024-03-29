@@ -12,5 +12,6 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'implicit-arrow-linebreak': 0,
     'arrow-body-style': 0,
+    'linebreak-style': 0,
   },
 }
