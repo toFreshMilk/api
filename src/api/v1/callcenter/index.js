@@ -5,6 +5,7 @@ const router = express.Router()
 
 // /callcenter
 router.get('/:logiCallcenterCode', async (req, res) => {
+  // console.log(`Callcenter_Get${process.env.NODE_ENV_PROC}`)
   const proc = await axiosInstance.sendRequest(`Callcenter_Get${process.env.NODE_ENV_PROC}`, req.body)
   // console.info(proc)
   res.json({
