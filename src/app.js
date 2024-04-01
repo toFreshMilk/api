@@ -3,13 +3,10 @@ const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
 
-const axiosInstance = require('./common/axios')
-
 require('dotenv').config()
 
+const v1 = require('./api/v1')
 const middlewares = require('./middlewares')
-const order = require('./api/order')
-const callcenter = require('./api/callcenter')
 
 const app = express()
 
@@ -24,15 +21,7 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/price/estimate', async (req, res) => {
-  // const ip = req.header
-  const proc = await axiosInstance.sendRequest('Callcenter_Get_Dev', req.body)
-  res.json(proc)
-})
-
-app.use('/order', order)
-app.use('/callcenter', callcenter)
-
+app.use('/v1', v1)
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 
