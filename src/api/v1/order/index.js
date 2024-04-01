@@ -1,22 +1,29 @@
 const express = require('express')
+const axiosInstance = require('../../../common/axios')
 
 const router = express.Router()
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+  const proc = await axiosInstance.sendRequest('Callcenter_Get_Dev', req.body)
+  // console.info(proc)
   res.json({
-    message: '주문등록 API - 👋🌎🌍🌏',
+    body: proc.params || 'err',
   })
 })
 
-router.patch('/', (req, res) => {
+router.patch('/', async (req, res) => {
+  const proc = await axiosInstance.sendRequest('Callcenter_Get_Dev', req.body)
+  // console.info(proc)
   res.json({
-    message: '주문수정 API - 👋🌎🌍🌏',
+    body: proc.params || 'err',
   })
 })
 
-router.delete('/', (req, res) => {
+router.delete('/', async (req, res) => {
+  const proc = await axiosInstance.sendRequest('Callcenter_Get_Dev', req.body)
+  // console.info(proc)
   res.json({
-    message: '주문취소 API - 👋🌎🌍🌏',
+    body: proc.params || 'err',
   })
 })
 
