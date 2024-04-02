@@ -4,7 +4,7 @@ const axios = require('axios')
 
 const defaultOptions = {
   // baseURL: 'http://211.172.242.188:8003/executeDBQuery',
-  baseURL: 'http://localhost:8008/executeDBQuery',
+  baseURL: process.env.NODE_ENV_WEBQUERY_URL || 'http://localhost:8008/executeDBQuery',
   timeout: 10000,
 }
 
@@ -38,7 +38,7 @@ const sendRequest = (_sqlcmd, _params) => {
   // const networkInterfaces = os.networkInterfaces()
   // const serverIP = networkInterfaces.eth0[0].address
   return axiosInstance.post('', {
-    sqlcmd: _sqlcmd,
+    sqlcmd: _sqlcmd + process.env.NODE_ENV_PROC,
     params: [
       [
         'ip',
@@ -64,5 +64,11 @@ const sendRequest = (_sqlcmd, _params) => {
     return response.data
   })
 }
+const sendRequestToLcs = (_url, _params) =>
+  axiosInstance.post(_url, _params, { baseURL: process.env.NODE_ENV_LCS_URL })
+    .then((response) => {
+      // console.dir(response)
+      return response.data
+    })
 
-module.exports = { ...axiosInstance, sendRequest }
+module.exports = { ...axiosInstance, sendRequest, sendRequestToLcs }
