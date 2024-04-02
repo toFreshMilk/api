@@ -3,6 +3,9 @@ module.exports = {
   env: {
     jest: true,
   },
+  parserOptions: {
+    ecmaVersion: 2020,
+  },
   extends: 'airbnb-base',
   rules: {
     // 'no-param-reassign': 'warn',
