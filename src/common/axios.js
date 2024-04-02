@@ -8,7 +8,6 @@ const defaultOptions = {
 }
 
 const axiosInstance = axios.create(defaultOptions)
-// const networkInterfaces = os.networkInterfaces()
 
 axiosInstance.interceptors.request.use((config) => {
   // 요청 전 처리
@@ -29,7 +28,7 @@ axiosInstance.interceptors.response.use(
     //   // 로그아웃 처리
     // }
     // TODO response 객체 없을 수도 있으니 lcs에 맞춰달라고 해야함
-    return Promise.reject(new Error(error.response.data))
+    return Promise.reject(new Error(error.response.data) || 'interceptors.response rejected')
   },
 )
 
