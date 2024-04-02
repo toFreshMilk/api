@@ -1,4 +1,4 @@
-const { orderModifyCheck } = require('./api/v1/order/intervalService')
+const { orderModifyCheck, orderStatusModifyCheck } = require('./api/v1/order/intervalService')
 const app = require('./app')
 
 const port = process.env.PORT || 8500
@@ -35,6 +35,6 @@ app.listen(port, () => {
   // 역방향 주문수정 프로시저를 1초마다 호출.
   setInterval(() => {
     // orderModifyCheck(ff)
+    // orderStatusModifyCheck(ff)
   }, 3000)
-  // orderModifyCheck(ff)
 })
