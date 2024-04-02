@@ -19,12 +19,12 @@ const orderModifyCheck = async (_params = {}) => {
   try {
     const result = axiosInstance.sendRequest(sqlcmd, _params)
     console.info(result)
-    if (result.data.length === 0) {
-      console.log('처리할게 없음')
-    } else {
-      console.log('lcs쪽으로 전송')
-      orderModifyReverse(result.body)
-    }
+    // if (result.data.length === 0) {
+    //   console.log('처리할게 없음')
+    // } else {
+    //   console.log('lcs쪽으로 전송')
+    //   orderModifyReverse(result.body)
+    // }
   } catch (err) {
     console.dir(_params)
     console.log('orderModifyCheck', err, new Date())
