@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 const os = require('os')
 const axios = require('axios')
 
@@ -35,11 +34,11 @@ axiosInstance.interceptors.response.use(
 )
 
 const sendRequest = async (_sqlcmd, _params) => {
-  // const networkInterfaces = os.networkInterfaces()
-  // const serverIP = networkInterfaces.eth0[0].address
+  const networkInterfaces = os.networkInterfaces()
 
   let result
   try {
+    const { address } = networkInterfaces['이더넷'][1]
     result = await axiosInstance.post('', {
       sqlcmd: _sqlcmd + process.env.NODE_ENV_PROC,
       params: [
@@ -47,7 +46,7 @@ const sendRequest = async (_sqlcmd, _params) => {
           'ip',
           'nvarchar',
           'input',
-          '111.222.10.1',
+          address,
         ],
         [
           'json',
