@@ -8,7 +8,7 @@ const axiosInstance = require('../../common/axios')
 router.get('/price/estimate', async (req, res) => {
   let proc
   try {
-    proc = await axiosInstance.sendRequest('Lcs_Price_Estimate_Get', req.body)
+    proc = await axiosInstance.sendRequest('Price_Estimate_Get', req.body)
     // console.info(proc)
   } catch (err) {
     proc = String(err)

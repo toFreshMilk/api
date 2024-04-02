@@ -15,7 +15,7 @@ const orderModifyReverse = (_params = {}) => {
   }
 }
 const orderModifyCheck = async (_params = {}) => {
-  const sqlcmd = 'Lcs_Order_Get_Modification'
+  const sqlcmd = 'Order_Get_Modification'
   try {
     const result = axiosInstance.sendRequest(sqlcmd, _params)
     console.info(result)
