@@ -69,11 +69,17 @@ const sendRequest = async (_sqlcmd, _params) => {
   }
   return result
 }
-const sendRequestToLcs = (_url, _params) =>
-  axiosInstance.post(_url, _params, { baseURL: process.env.NODE_ENV_LCS_URL })
-    .then((response) => {
-      // console.dir(response)
-      return response.data
+const sendRequestToLcs = async (_url, _params) => {
+  let result
+  try {
+    result = await axiosInstance.post(_url, _params, {
+      baseURL: process.env.NODE_ENV_LCS_URL,
     })
+  } catch (err) {
+    // console.error(err)
+    result = String(err)
+  }
+  return result
+}
 
 module.exports = { ...axiosInstance, sendRequest, sendRequestToLcs }
