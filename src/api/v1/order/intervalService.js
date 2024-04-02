@@ -1,8 +1,8 @@
 const axiosInstance = require('../../../common/axios')
 
-const orderModifyReverse = (_params = {}) => {
+const orderModifyReverse = async (_params = {}) => {
   const url = '/api/v1/interface/logi/order'
-  const result = axiosInstance.sendRequestToLcs(url, _params)
+  const result = await axiosInstance.sendRequestToLcs(url, _params)
   console.info(result)
   // if (result.data === 'ok') {
   //   console.log('끝')
@@ -12,15 +12,8 @@ const orderModifyReverse = (_params = {}) => {
 }
 const orderModifyCheck = async (_params = {}) => {
   const proc = await axiosInstance.sendRequest('Price_Estimate_Get', _params)
-
-  // const { data } = await axiosInstance.sendRequest('Order_Get_Modification', _params)
-  // if (data.length === 0) {
-  //   console.log('처리할게 없음')
-  // } else {
-  //   console.log('lcs쪽으로 전송')
-  //   orderModifyReverse(proc)
-  // }
-  // orderModifyReverse(proc)
-  // console.info(proc)
+  if (proc.return_code === 1) {
+    orderModifyReverse(proc)
+  }
 }
 module.exports = { orderModifyCheck }

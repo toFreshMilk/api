@@ -29,7 +29,7 @@ axiosInstance.interceptors.response.use(
     // if (error.response && error.response.status === 401) {
     //   // 로그아웃 처리
     // }
-    // return Promise.reject(new Error(error))
+    // TODO response 객체 없을 수도 있으니 lcs에 맞춰달라고 해야함
     return Promise.reject(new Error(error.response.data))
   },
 )
@@ -68,7 +68,6 @@ const sendRequest = async (_sqlcmd, _params) => {
     // console.error(err)
     result = String(err)
   }
-  console.log(result)
   return result
 }
 const sendRequestToLcs = async (_url, _params) => {
