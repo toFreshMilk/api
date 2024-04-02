@@ -11,15 +11,16 @@ const orderModifyReverse = (_params = {}) => {
   // }
 }
 const orderModifyCheck = async (_params = {}) => {
-  const { data } = await axiosInstance.sendRequest('Price_Estimate_Get', _params)
+  const proc = await axiosInstance.sendRequest('Price_Estimate_Get', _params)
+
   // const { data } = await axiosInstance.sendRequest('Order_Get_Modification', _params)
   // if (data.length === 0) {
   //   console.log('처리할게 없음')
   // } else {
   //   console.log('lcs쪽으로 전송')
-  //   orderModifyReverse(result.body)
+  //   orderModifyReverse(proc)
   // }
-  // orderModifyReverse(data)
-  // console.info(data)
+  // orderModifyReverse(proc)
+  // console.info(proc)
 }
 module.exports = { orderModifyCheck }
