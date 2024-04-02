@@ -4,27 +4,42 @@ const axiosInstance = require('../../../common/axios')
 const router = express.Router()
 
 router.post('/', async (req, res) => {
-  const proc = await axiosInstance.sendRequest('Lcs_Order_Set_Registration', req.body)
-  // console.info(proc)
-  res.json({
-    body: proc.params || 'err',
-  })
+  let proc
+  try {
+    proc = await axiosInstance.sendRequest('Lcs_Order_Set_Registration', req.body)
+  } catch (err) {
+    proc = String(err)
+  } finally {
+    res.json({
+      body: proc,
+    })
+  }
 })
 
 router.patch('/', async (req, res) => {
-  const proc = await axiosInstance.sendRequest('Lcs_Order_Set_Modification', req.body)
-  // console.info(proc)
-  res.json({
-    body: proc.params || 'err',
-  })
+  let proc
+  try {
+    proc = await axiosInstance.sendRequest('Lcs_Order_Set_Modification', req.body)
+  } catch (err) {
+    proc = String(err)
+  } finally {
+    res.json({
+      body: proc,
+    })
+  }
 })
 
 router.delete('/', async (req, res) => {
-  const proc = await axiosInstance.sendRequest('Lcs_Order_Set_Cancelation', req.body)
-  // console.info(proc)
-  res.json({
-    body: proc.params || 'err',
-  })
+  let proc
+  try {
+    proc = await axiosInstance.sendRequest('Lcs_Order_Set_Cancelation', req.body)
+  } catch (err) {
+    proc = String(err)
+  } finally {
+    res.json({
+      body: proc,
+    })
+  }
 })
 
 module.exports = router

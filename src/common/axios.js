@@ -29,8 +29,7 @@ axiosInstance.interceptors.response.use(
     // if (error.response && error.response.status === 401) {
     //   // 로그아웃 처리
     // }
-    console.trace(error)
-    return Promise.reject(new Error('return Promise.reject'))
+    return Promise.reject(new Error(error.response.data))
   },
 )
 

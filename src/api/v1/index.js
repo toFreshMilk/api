@@ -6,11 +6,17 @@ const order = require('./order')
 const axiosInstance = require('../../common/axios')
 
 router.get('/price/estimate', async (req, res) => {
-  const proc = await axiosInstance.sendRequest('Lcs_Price_Estimate_Get', req.body)
-  // console.info(proc)
-  res.json({
-    body: proc.params || 'err',
-  })
+  let proc
+  try {
+    proc = await axiosInstance.sendRequest('Lcs_Price_Estimate_Get', req.body)
+    // console.info(proc)
+  } catch (err) {
+    proc = String(err)
+  } finally {
+    res.json({
+      body: proc,
+    })
+  }
 })
 
 router.use('/callcenter', callcenter)

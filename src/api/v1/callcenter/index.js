@@ -3,34 +3,43 @@ const axiosInstance = require('../../../common/axios')
 
 const router = express.Router()
 
-// /callcenter
 router.get('/:logiCallcenterCode', async (req, res) => {
-  // console.log(`Callcenter_Get${process.env.NODE_ENV_PROC}`)
-  const proc = await axiosInstance.sendRequest('Callcenter_Get', req.body)
-  // console.info(proc)
-  res.json({
-    body: proc.params || 'err',
-  })
+  let proc
+  try {
+    proc = await axiosInstance.sendRequest('Callcenter_Get', req.body)
+  } catch (err) {
+    proc = String(err)
+  } finally {
+    res.json({
+      body: proc,
+    })
+  }
 })
 
 router.get('/:logiCallcenterCode/branches', async (req, res) => {
-  console.log(req.params)
-  console.log(req.query)
-  const proc = await axiosInstance.sendRequest('CallcenterBranchs_Get', req.body)
-  // console.info(proc)
-  res.json({
-    body: proc.params || 'err',
-  })
+  let proc
+  try {
+    proc = await axiosInstance.sendRequest('CallcenterBranchs_Get', req.body)
+  } catch (err) {
+    proc = String(err)
+  } finally {
+    res.json({
+      body: proc,
+    })
+  }
 })
 
 router.post('/:logiCallcenterCode/branches', async (req, res) => {
-  console.log(req.params)
-  console.log(req.query)
-  const proc = await axiosInstance.sendRequest('CallcenterBranchs_Post', req.body)
-  // console.info(proc)
-  res.json({
-    body: proc.params || 'err',
-  })
+  let proc
+  try {
+    proc = await axiosInstance.sendRequest('CallcenterBranchs_Post', req.body)
+  } catch (err) {
+    proc = String(err)
+  } finally {
+    res.json({
+      body: proc,
+    })
+  }
 })
 
 module.exports = router
