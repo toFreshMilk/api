@@ -29,39 +29,45 @@ axiosInstance.interceptors.response.use(
     // if (error.response && error.response.status === 401) {
     //   // 로그아웃 처리
     // }
+    // return Promise.reject(new Error(error))
     return Promise.reject(new Error(error.response.data))
   },
 )
 
-const sendRequest = (_sqlcmd, _params) => {
+const sendRequest = async (_sqlcmd, _params) => {
   // const networkInterfaces = os.networkInterfaces()
   // const serverIP = networkInterfaces.eth0[0].address
-  return axiosInstance.post('', {
-    sqlcmd: _sqlcmd + process.env.NODE_ENV_PROC,
-    params: [
-      [
-        'ip',
-        'nvarchar',
-        'input',
-        '111.222.10.1',
+
+  let result
+  try {
+    result = await axiosInstance.post('', {
+      sqlcmd: _sqlcmd + process.env.NODE_ENV_PROC,
+      params: [
+        [
+          'ip',
+          'nvarchar',
+          'input',
+          '111.222.10.1',
+        ],
+        [
+          'json',
+          'nvarchar',
+          'input',
+          JSON.stringify(_params),
+        ],
+        [
+          'json_result',
+          'nvarchar',
+          'output',
+          '',
+        ],
       ],
-      [
-        'json',
-        'nvarchar',
-        'input',
-        JSON.stringify(_params),
-      ],
-      [
-        'json_result',
-        'nvarchar',
-        'output',
-        '',
-      ],
-    ],
-  }).then((response) => {
-    // console.dir(response)
-    return response.data
-  })
+    })
+  } catch (err) {
+    // console.error(err)
+    result = String(err)
+  }
+  return result
 }
 const sendRequestToLcs = (_url, _params) =>
   axiosInstance.post(_url, _params, { baseURL: process.env.NODE_ENV_LCS_URL })
