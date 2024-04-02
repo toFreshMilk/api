@@ -6,9 +6,9 @@ const order = require('./order')
 const axiosInstance = require('../../common/axios')
 
 router.get('/price/estimate', async (req, res) => {
-  const { data } = await axiosInstance.sendRequest('Price_Estimate_Get', req.body)
+  const proc = await axiosInstance.sendRequest('Price_Estimate_Get', req.body)
   res.json({
-    body: data,
+    body: proc,
   })
 })
 

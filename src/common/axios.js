@@ -63,10 +63,12 @@ const sendRequest = async (_sqlcmd, _params) => {
         ],
       ],
     })
+    result = JSON.parse(result.data.params.json_result)
   } catch (err) {
     // console.error(err)
     result = String(err)
   }
+  console.log(result)
   return result
 }
 const sendRequestToLcs = async (_url, _params) => {
