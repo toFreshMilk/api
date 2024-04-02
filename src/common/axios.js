@@ -17,7 +17,7 @@ axiosInstance.interceptors.request.use((config) => {
   // console.dir(config)
   return config
 }, (error) => {
-  console.trace(error)
+  // console.trace(error)
 })
 
 axiosInstance.interceptors.response.use(
