@@ -3,7 +3,7 @@ const axios = require('axios')
 
 const defaultOptions = {
   // baseURL: 'http://211.172.242.188:8003/executeDBQuery',
-  baseURL: process.env.NODE_ENV_WEBQUERY_URL || 'http://localhost:8008/executeDBQuery',
+  baseURL: process.env.NODE_ENV_WEBQUERY_URL,
   timeout: 10000,
 }
 
