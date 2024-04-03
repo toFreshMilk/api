@@ -18,7 +18,7 @@ axiosInstance.interceptors.request.use((config) => {
   return config
 }, (error) => {
   // console.trace('error')
-  // console.trace(error)
+  console.trace(error)
 })
 
 axiosInstance.interceptors.response.use(
@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
     // }
     // console.log('defaultOptions')
     // console.log(defaultOptions)
-    // console.error(error)
+    console.trace(error)
     let errObj
     if (error.response && error.response.data) {
       errObj = new Error(error.response.data)
@@ -44,8 +44,6 @@ axiosInstance.interceptors.response.use(
 )
 
 const sendRequest = async (_sqlcmd, _params) => {
-  console.log('process.envsendRequest')
-  console.log(process.env)
   const networkInterfaces = os.networkInterfaces()
   let result
   try {
@@ -88,7 +86,6 @@ const sendRequestToLcs = async (_url, _params) => {
       baseURL: process.env.NODE_ENV_LCS_URL,
     })
   } catch (err) {
-    // console.error(err)
     result = String(err)
   }
   return result
