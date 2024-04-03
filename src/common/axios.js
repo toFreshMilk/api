@@ -1,5 +1,6 @@
 const os = require('os')
 const axios = require('axios')
+require('dotenv').config()
 
 const defaultOptions = {
   // baseURL: 'http://211.172.242.188:8003/executeDBQuery',
@@ -12,9 +13,11 @@ const axiosInstance = axios.create(defaultOptions)
 axiosInstance.interceptors.request.use((config) => {
   // 요청 전 처리
   // config.headers['Authorization'] = `Bearer ${token}`;
+  // console.dir('config')
   // console.dir(config)
   return config
 }, (error) => {
+  // console.trace('error')
   // console.trace(error)
 })
 
@@ -27,6 +30,9 @@ axiosInstance.interceptors.response.use(
     // if (error.response && error.response.status === 401) {
     //   // 로그아웃 처리
     // }
+    // console.log('defaultOptions')
+    // console.log(defaultOptions)
+    // console.error(error)
     let errObj
     if (error.response && error.response.data) {
       errObj = new Error(error.response.data)
@@ -38,11 +44,13 @@ axiosInstance.interceptors.response.use(
 )
 
 const sendRequest = async (_sqlcmd, _params) => {
+  console.log('process.envsendRequest')
+  console.log(process.env)
   const networkInterfaces = os.networkInterfaces()
-
   let result
   try {
-    const { address } = networkInterfaces['이더넷'][1]
+    const netwrokName = process.env.NODE_ENV_NETWORK_NAME
+    const { address } = networkInterfaces[netwrokName][0]
     result = await axiosInstance.post('', {
       sqlcmd: _sqlcmd + process.env.NODE_ENV_PROC,
       params: [
@@ -69,7 +77,7 @@ const sendRequest = async (_sqlcmd, _params) => {
     result = JSON.parse(result?.data?.params?.json_result)
   } catch (err) {
     // console.error(err)
-    result = String(err)
+    result = String(`sendRequest ${err}`)
   }
   return result
 }

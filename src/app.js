@@ -4,8 +4,6 @@ const helmet = require('helmet')
 const cors = require('cors')
 const os = require('os')
 
-require('dotenv').config()
-
 const v1 = require('./api/v1')
 const middlewares = require('./middlewares')
 
