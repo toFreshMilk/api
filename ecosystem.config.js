@@ -7,8 +7,8 @@ module.exports = {
       exec_mode: 'cluster',
       wait_ready: true,
       kill_timeout: 5000,
-      output: '/opt/out.log',
-      error: '/opt/error.log',
+      output: '/opt/logs/out.log',
+      error: '/opt/logs/error.log',
     },
   ],
 }
