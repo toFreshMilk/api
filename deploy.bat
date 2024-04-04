@@ -9,7 +9,7 @@ Rem Linux(remote) account name
 set "destUser=root"
 
 Rem Linux(remote) IP
-set "destHost=172.17.20.10"
+set "destHost=172.17.20.13"
 
 Rem Linux(remote) port
 set "destPort=9999"
