@@ -1,17 +1,10 @@
-const os = require('os')
 const { orderModifyCheck, orderStatusModifyCheck } = require('./api/v1/order/intervalService')
 const app = require('./app')
 require('dotenv').config()
 
-const networkInterfaces = os.networkInterfaces()
-
 const port = process.env.PORT || 8500
 app.listen(port, () => {
   console.info(`Listening: http://localhost:${port}`)
-  const netwrokName = process.env.NODE_ENV_NETWORK_NAME
-  const { address } = networkInterfaces[netwrokName][0]
-  console.log('address')
-  console.log(address)
 
   const ff = {
     body: {
