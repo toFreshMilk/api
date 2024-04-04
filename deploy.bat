@@ -22,10 +22,14 @@ set "excludedDirs=.git .idea node_modules"
 
 echo [Note] Transferring directory %sourceDir% to %destUser%@%destHost%:%destDir%
 for /d %%i in ("%sourceDir%\*") do (
-    echo %%~nxi|findstr /i /b /e /l /x "%excludedDirs%" >nul || (
-        echo Transferring: %%i
-        scp -P "%destPort%" -prq "%%i\." "%destUser%"@"%destHost%":"%destDir%"
-    )
+     echo Transferring directory: %%~nxi
+        echo %%~nxi|findstr /i /b /e /l /x "%excludedDirs%" >nul || (
+            scp -P "%destPort%" -prq "%%i\." "%destUser%"@"%destHost%":"%destDir%" && (
+                echo Directory transferred successfully: %%~nxi
+            ) || (
+                echo Failed to transfer directory: %%~nxi
+            )
+        )
 )
 
 Rem Name of install script
