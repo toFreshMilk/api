@@ -8,3 +8,8 @@ npm-debug.log*
 # Dependency directories
 node_modules/
 .npm
+
+
+*.bat
+*.sh
+.env
